@@ -26,6 +26,13 @@ hour_count = 0.00
 for x in range(hours):
     hour_count += 1.00
     print(f'Hour {hour_count}')
+    roles_this_hour = roles.copy()
+    random.shuffle(roles_this_hour)
+
     for worker in workers:
-        role = random.choice(roles)
-        print(f'  {worker} -> {role}')
+        if roles_this_hour:
+            assigned_role = roles_this_hour.pop()
+        else:
+            assigned_role = 'flex'
+
+        print(f'  {worker} -> {assigned_role}')
